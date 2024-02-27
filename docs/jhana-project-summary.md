@@ -22,11 +22,10 @@ Jhāna AI is a cutting-edge conversational agent which provides voice assistance
 
 ## Our Solution
 
-
 - They are difficult to achieve without guidance, are rarely taught in the West, except in Buddhist and Hindu retreat settings. They are not widely accessible to the general public.
 
 
-Jhāna AI can provide guidance to the user to help them achieve jhāna states. can provide guided meditations, answer questions about meditation, and provide feedback on the user's meditation state. It can also provide real-time feedback on the user's meditation state using an EEG brain sensing headband (Muse 2). Ask Jhāna with text or speech to guide you through a meditation, and it will provide real-time feedback on your meditation state, and help you to achieve deep states of meditation.
+- Jhāna AI can provide guidance to the user to help them achieve jhāna states. can provide guided meditations, answer questions about meditation, and provide feedback on the user's meditation state. It can also provide real-time feedback on the user's meditation state using an EEG brain sensing headband (Muse 2). Ask Jhāna with text or speech to guide you through a meditation, and it will provide real-time feedback on your meditation state, and help you to achieve deep states of meditation.
 
 ## Tech Stack
 
