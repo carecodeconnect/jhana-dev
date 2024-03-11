@@ -1,8 +1,8 @@
-# `Jhāna.AI`
+# `Jhāna.AI`: Personal Meditation Guide
 
 # Project Summary
 
-`Jhāna.AI`: Personal Meditation Guide. `Jhāna.AI` is an interactive voice assistant which uses real-time brain sensing to guide the user in ancient Jhana Meditation, for reaching states of concentration, bliss and calm, and finding relief from pain. `Jhāna.AI` uses cutting-edge technologies of biofeedback, deep learning, and natural speech interaction for personalised guided meditation sessions. :woman_in_lotus_position::robot_face::pray: 
+`Jhāna.AI` is an interactive voice assistant which uses real-time brain sensing to guide the user in ancient Jhana Meditation, for reaching states of concentration, bliss and calm, and finding relief from pain. `Jhāna.AI` uses cutting-edge technologies of biofeedback, deep learning, and natural speech interaction for personalised guided meditation sessions. :woman_in_lotus_position::robot_face::pray: 
 
 ## Overview
 
@@ -61,19 +61,17 @@ Our aim is to deploy Jhāna on a web server with GPU access for easy access via 
 
 - `Docker` will be used to containerise the Jhāna app, to allow for deployment and sharing of the conversational agent with the user.
 
-- `Streamlit` for the user interface, hosted on a web server with GPU access (e.g. Hugging Face Spaces, Heroku).
+- `Streamlit` for the user interface, hosted on a web server with GPU access (e.g. AWS, Hugging Face Spaces, Heroku).
 
-## Team
+## Collaborators
 
-- Stephen
-- Jutta
-- Safak
-- Vincenzo
-
-- Bahar Rezaei (DSR alumni)
+- [Bahar](https://github.com/Bahar-Rezaei)
+- [Jutta](https://github.com/juttaromberg)
+- [Safak](https://github.com/ozdensafak)
+- [Vincenzo](https://github.com/Vinsora)
 
 ## Mentors
 
-We have spoken to Dr. Tristan Behrens (NLP) and Krzysztof Buzar (EEG) who are happy to help us with the project!
+Dr. Tristan Behrens (NLP) and Krzysztof Buzar (EEG) are the project mentors at Data Science Retreat.
 
-We've also received enthusiastic support from Dr. Carmen Martínez (Conversational AI at FlixBus), Jacopo Farina (Data Engineer at FlixBus), and Dr. Bob Moore (IBM Watson)!
+We gratefully appreciate expert guidance from Dr. Carmen Martínez (Conversational AI at FlixBus), Jacopo Farina (Data Engineer at FlixBus), and Dr. Bob Moore (IBM Watson).
