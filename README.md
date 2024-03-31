@@ -62,11 +62,20 @@ On first running the app, the deep learning models will be downloaded and instal
 - `conda install -c conda-forge PyAudio=0.2.14`
 - `conda install alsa-plugins` # for Ubuntu
 
-### Install TTS
+### Install Whisper and Download Model
 
-- `pip install TTS`
+- `pip install openai-whisper==20231117` # if not already installed
 
-To run tts in the terminal and download the model for the first time:
+To download a speech-to-text model for the first time:
+
+- `whisper voice-to-clone.wav --language English --model tiny.en` # or small.en
+
+### Install TTS and Download Model
+
+- `pip install TTS` # if not already installed
+
+To run `tts` in the terminal and download the text-to-speech model for the first time:
+
 ```
  tts --model_name tts_models/multilingual/multi-dataset/xtts_v2 \
      --text "Bugün okula gitmek istemiyorum." \
@@ -74,6 +83,8 @@ To run tts in the terminal and download the model for the first time:
      --language_idx tr \
      --use_cuda true
 ```
+
+The `tts` models suitable for voice cloning are `tts_models/multilingual/multi-dataset/xtts_v2` and `tts_models/multilingual/multi-dataset/xtts_v2.1`.
 
 For further information on TTS, see [TTS Documentation](https://docs.coqui.ai/en/latest/models/xtts.html).
 
