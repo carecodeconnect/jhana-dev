@@ -1,0 +1,7 @@
+langchain
+pyaudio
+wave
+TTS
+simpleaudio
+torch
+git+https://github.com/openai/whisper.git 
