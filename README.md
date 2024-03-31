@@ -110,7 +110,21 @@ Or install the packages individually:
 
 ## Usage
 
+Jhana can be run in two modes: with or without EEG sensing. The EEG sensing mode requires a Muse 2 EEG headband.
+
 1. Change directory: `cd src`
+
+2. Run the app: `python main.py`
+
+3. Jhana will wait for your voice with a "Listening..." prompt
+
+4. Say "Guide me in a loving-kindness meditation" to begin the meditation session!
+
+To run the app with EEG sensing:
+
+0. Ensure that the Muse 2 EEG headband is connected to the computer via Bluetooth.
+
+1. Change directory: `cd src-eeg`
 
 2. Run the app: `python main.py`
 
