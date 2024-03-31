@@ -8,7 +8,8 @@ import simpleaudio as sa
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
 # Initialize the TTS object at the module level and move it to the specified device
-tts = TTS("tts_models/multilingual/multi-dataset/xtts_v2").to(device)
+#tts = TTS("tts_models/multilingual/multi-dataset/xtts_v2").to(device)
+tts = TTS("tts_models/en/ljspeech/tacotron2-DDC").to(device)
 
 def generate_speech(sentence):
     # Generate speech from the input sentence and save it to "output.wav"
@@ -16,7 +17,7 @@ def generate_speech(sentence):
         text=sentence,
         file_path="output.wav",
         speaker_wav=["voice-to-clone.wav"],
-        language="en",
+        #language="en", # for multilingual model
         split_sentences=True
     )
     # Play the generated audio
