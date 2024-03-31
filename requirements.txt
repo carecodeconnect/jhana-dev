@@ -6,3 +6,4 @@ TTS
 simpleaudio
 torch
 openai-whisper=20231117
+ollama
