@@ -1,6 +1,6 @@
 # Import necessary modules
 import listen  # Module for voice activity detection and initiating recording
-import meditation_guide_speaker
+import meditation_guide  # Module for meditation guidance using TTS
 from recorder import Recorder
 from transcriber import transcribe_audio
 
