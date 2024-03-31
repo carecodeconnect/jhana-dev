@@ -4,9 +4,11 @@
 
 ## Background
 
-The heart of `Jhāna.AI` is the language model `jhana-mistral-7b-gguf`. This model is trained on a large corpus of meditation texts, and is fine-tuned on a smaller dataset of meditation instructions. The model is capable of generating novel meditation instructions, and can be used to guide the user in a meditation session. The model is deployed with `ollama`, and is accessed by the `Jhana` app.
+The heart of `Jhāna.AI` is the language model [jhana-mistral-7b-gguf](https://ollama.com/carecodeconnect/jhana-mistral-7b-gguf). This model is trained on a large corpus of meditation texts, and is fine-tuned on a smaller dataset of meditation instructions. The model is capable of generating novel meditation instructions, and can be used to guide the user in a meditation session. The model is deployed with `ollama`, and is accessed by the `Jhana` app.
 
 For a summary of the project, see [Jhana Project Summary](docs/jhana-project-summary.md).
+
+To download the model from Hugging Face, see [jhana-mistral-GGUF](https://huggingface.co/carecodeconnect/jhana-mistral-GGUF).
 
 ## Requirements
 
@@ -69,6 +71,8 @@ On first running the app, the deep learning models will be downloaded and instal
 To download a speech-to-text model for the first time:
 
 - `whisper voice-to-clone.wav --language English --model tiny.en` # or small.en
+
+For further information on Whisper, see [openai-whisper](https://pypi.org/project/openai-whisper/).
 
 ### Install TTS and Download Model
 
