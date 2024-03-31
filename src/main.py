@@ -23,19 +23,6 @@ def audio_recording_and_transcription(filename="recorded_audio.wav"):
     print(f"Transcribed Text: {transcription}")
     return transcription
 
-# def main():
-#     # Wait for voice activity before starting the recording
-#     voice_detected = listen.start_recording_if_voice_detected()
-
-#     if voice_detected:
-#         # Once voice is detected, record and transcribe the audio to use as the prompt
-#         transcribed_prompt = audio_recording_and_transcription()
-
-#         # Use the transcribed text as the prompt for the meditation guidance
-#         meditation_guide_speaker.meditation_guidance(transcribed_prompt)
-#     else:
-#         print("No voice detected. Exiting.")
-
 def main():
     # Wait for voice activity before starting the recording
     listen.start_recording_if_voice_detected()  # This will record audio including pre-buffer when voice is detected
