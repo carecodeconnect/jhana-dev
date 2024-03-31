@@ -12,13 +12,13 @@ To download the model from Hugging Face, see [jhana-mistral-GGUF](https://huggin
 
 ## Requirements
 
-- NVIDIA/AMD GPU with CUDA support is recommended for running the deep learning models.
+- Windows/Linux/MacOS machine.
+- NVIDIA/AMD GPU with CUDA support recommended for running the deep learning models.
 - 8 GB of VRAM is recommended.
-- A microphone is required for voice input.
-- A Muse EEG headband is required for brain sensing.
-- A Windows/Linux/MacOS machine is required for running the app.
 - Around 20 GB of free disk space is required for the deep learning models.
 - Python 3.10 is recommended.
+- Microphone is required for voice input.
+- [Muse 2](https://choosemuse.com/products/muse-2) EEG headband is required for the brain sensing option (optional).
 
 ## Installation
 
@@ -94,7 +94,19 @@ For further information on TTS, see [TTS Documentation](https://docs.coqui.ai/en
 
 ### EEG with Muse
 
-- `pip install muselsl`
+In addition to the above, the following packages are required for EEG sensing with Muse:
+
+- `pip install -r requirements-eeg.txt`
+
+Or install the packages individually:
+
+- `pip install muselsl==2.2.2`
+- `pip install pylsl==1.16.2`
+- `pip install playsound==1.3.0`
+- `pip install matplotlib==3.8.2`
+- `pip install numpy==1.25.2`
+- `pip install scikit-learn==1.4.0`
+- `pip install scipy==1.4.0`
 
 ## Usage
 
