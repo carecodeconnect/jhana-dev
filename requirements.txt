@@ -6,4 +6,3 @@ pydantic<2.0
 simpleaudio==1.0.4
 TTS==0.22.0
 torch==2.2.0
-
