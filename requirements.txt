@@ -1,9 +1,9 @@
+langchain==0.1.13
+ollama==0.1.6
+openai-whisper==20231117
+pyaudio==0.2.14
 pydantic<2.0
-langchain=0.1.13
-pyaudio
-wave
-TTS
-simpleaudio
-torch
-openai-whisper=20231117
-ollama=0.1.6
+simpleaudio==1.0.4
+TTS==0.22.0
+torch==2.2.0
+
