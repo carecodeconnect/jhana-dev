@@ -109,7 +109,7 @@ Follow the instructions at [OpenAI Whisper](https://pypi.org/project/openai-whis
 To download a speech-to-text model for the first time:
 
 - `cd audio`
-- `whisper voice-to-clone.wav --language English --model tiny.en` 
+- `whisper voice-to-clone.wav --language English --model small.en` 
 
 This should create several transcriptions as text files in the current directory.
 
@@ -187,6 +187,8 @@ Jhana can be run in two modes: with or without EEG sensing. The EEG sensing mode
 - `python main.py`
 
 Or:
+
+### MacOS or Ubuntu
 
 - `./main.py`
 
