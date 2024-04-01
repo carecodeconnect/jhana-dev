@@ -26,6 +26,14 @@ To download the model from Hugging Face, see [jhana-mistral-GGUF](https://huggin
 
 On first running the app, the deep learning models will be downloaded and installed. This may take some time, depending on your internet connection. An alternative is to download the models prior to running the app, by running the following commands:
 
+### Prerequisites: Windows Users
+
+Install Chocolatey by following these instructions: [here](https://chocolatey.org/install) or [here](https://community.chocolatey.org/courses/installation/installing?method=installing-chocolatey).
+
+Run Command Prompt (`cmd.exe`) or PowerShell (`powershell.exe`) as Administrator and install the following packages:
+
+- `choco install ffmpeg`
+
 ### Prerequisites: Ubuntu Users
 
 - `sudo apt install gcc` # for simpleaudio
@@ -43,7 +51,7 @@ On first running the app, the deep learning models will be downloaded and instal
 
 ### Install Ollama
 
-[Download Ollama](https://ollama.com/download), which should automatically start the ollama service.
+[Download Ollama](https://ollama.com/download), and install it for your operating system, which should automatically start the ollama service.
 
 - `ollama pull carecodeconnect/jhana-mistral-7b-gguf` will download the model.
 
@@ -67,18 +75,36 @@ On first running the app, the deep learning models will be downloaded and instal
 
 - `pip install -r requirements.txt`
 
+### Install PyAudio
+
+Follow the instructions at [PyAudio](https://pypi.org/project/PyAudio/)
+
+For example:
+
+- `conda install -c conda-forge PyAudio=0.2.14` # for Ubuntu
+- `brew install portaudio` then `pip install pyaudio` # for MacOS
+
 ### Install Conda Packages
 
-- `conda install -c conda-forge PyAudio=0.2.14`
 - `conda install alsa-plugins` # for Ubuntu
 
 ### Install Whisper and Download Model
 
-- `pip install openai-whisper==20231117` # if not already installed
+Follow the instructions at [OpenAI Whisper](https://pypi.org/project/openai-whisper/).
+
+For example:
+
+- `sudo apt update && sudo apt install ffmpeg` # for Ubuntu
+- `brew install ffmpeg` # for MacOS
+
+- `pip install openai-whisper==20231117`
 
 To download a speech-to-text model for the first time:
 
+- `cd src`
 - `whisper voice-to-clone.wav --language English --model tiny.en` # or small.en
+
+This creates several transcriptions as text files in the current directory.
 
 For further information on Whisper, see [openai-whisper](https://pypi.org/project/openai-whisper/).
 
@@ -86,16 +112,14 @@ For further information on Whisper, see [openai-whisper](https://pypi.org/projec
 
 - `pip install TTS` # if not already installed
 
-To run `tts` in the terminal and download the text-to-speech model for the first time:
-
-- `cd src`
+To run `tts` in the terminal and download the text-to-speech model for the first time, check you are still in the `src` folder, then:
 
 ```
  tts --model_name tts_models/multilingual/multi-dataset/xtts_v2 \
      --text "Focus on your breath." \
      --speaker_wav voice-to-clone.wav \
      --language_idx en \
-     --use_cuda true
+     --use_cuda true # false for CPU
 ```
 
 To play the recorded audio:
@@ -132,7 +156,10 @@ Or install the packages individually:
 
 Jhana can be run in two modes: with or without EEG sensing. The EEG sensing mode requires a Muse 2 EEG headband.
 
-1. Change directory: `cd src`
+1. Navigate to the `src` directory:
+
+`cd ..`
+
 
 2. Run the app: 
 
