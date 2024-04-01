@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import listen  # Module for voice activity detection and initiating recording
 import meditation_guide  # Module for meditation guidance using TTS
 from recorder import Recorder
