@@ -1,6 +1,7 @@
 import time
 from langchain_community.llms import Ollama
 from speaker import generate_speech  # Import the generate_speech function
+import requests
 
 def initialize_model():
     """Initializes and returns the Ollama model."""
@@ -46,24 +47,43 @@ def print_sentences_from_buffer(sentence_buffer):
 
 def meditation_guidance(prompt):
     """Guides the user through a meditation based on the given prompt, using TTS for vocalization."""
-    model = initialize_model()
+    try:
+        model = initialize_model()
+    except Exception as e:
+        print("An error occurred during model initialization:", e)
+        return
 
     sentence_buffer = ""
     pause_buffer = ""
     in_pause = False
     sentences_printed = False  # Flag to track if any sentences have been vocalized
+    first_chunk_handled = False  # Flag to ensure the first chunk ends with a sentence
 
-    for chunk in model.stream(prompt):
-        in_pause, sentence_buffer, pause_buffer = process_chunk(chunk, in_pause, sentence_buffer, pause_buffer)
-        if '.' in chunk:
-            sentence_buffer = print_sentences_from_buffer(sentence_buffer)
-            sentences_printed = True  # Update flag after vocalizing sentences
+    try:
+        for chunk in model.stream(prompt):
+            in_pause, sentence_buffer, pause_buffer = process_chunk(chunk, in_pause, sentence_buffer, pause_buffer)
 
-        if not in_pause and pause_buffer:
-            # Handle the pause instruction outside the loop to skip if it's the first event
-            handle_pause_instruction(pause_buffer, sentences_printed)
-            pause_buffer = ""
+            # Ensure the first chunk processed ends with a sentence before any pause
+            if not first_chunk_handled:
+                if '.' in chunk:
+                    first_chunk_handled = True
+                else:
+                    continue  # Skip further processing until we get a complete sentence
+
+            if '.' in chunk:
+                sentence_buffer = print_sentences_from_buffer(sentence_buffer)
+                sentences_printed = True  # Update flag after vocalizing sentences
+
+            if not in_pause and pause_buffer:
+                # Handle the pause instruction outside the loop to skip if it's the first event
+                handle_pause_instruction(pause_buffer, sentences_printed)
+                pause_buffer = ""
+
+    except requests.exceptions.ConnectionError:
+        print("Failed to connect to the Ollama server. Please ensure the Ollama server is started and try again.")
+        return
 
     # Process any remaining text after the loop
     if sentence_buffer:
         print_sentences_from_buffer(sentence_buffer)  # Vocalize any remaining text
+

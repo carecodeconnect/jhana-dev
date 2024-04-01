@@ -31,6 +31,12 @@ On first running the app, the deep learning models will be downloaded and instal
 - `sudo apt install gcc` # for simpleaudio
 - `sudo apt install ffmpeg`
 - `sudo apt install pulseaudio`
+- `sudo apt install libasound2-plugins`
+- `sudo apt install alsa-base`
+- `sudo apt install alsa-utils`
+- `sudo apt install alsa-oss`
+- `sudo apt install libasound2`
+- `sudo apt install libasound2-dev`
 - `sudo apt install libpcap-dev`
 - `sudo apt install python3-dev`
 - `sudo setcap 'cap_net_raw,cap_net_admin=eip' $(which hcitool)`
