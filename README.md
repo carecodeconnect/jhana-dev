@@ -82,15 +82,27 @@ For further information on Whisper, see [openai-whisper](https://pypi.org/projec
 
 To run `tts` in the terminal and download the text-to-speech model for the first time:
 
+- `cd src`
+
 ```
  tts --model_name tts_models/multilingual/multi-dataset/xtts_v2 \
-     --text "Bugün okula gitmek istemiyorum." \
-     --speaker_wav /path/to/target/speaker.wav \
-     --language_idx tr \
+     --text "Focus on your breath." \
+     --speaker_wav voice-to-clone.wav \
+     --language_idx en \
      --use_cuda true
 ```
 
-The `tts` models suitable for voice cloning are `tts_models/multilingual/multi-dataset/xtts_v2` and `tts_models/multilingual/multi-dataset/xtts_v2.1`.
+To play the recorded audio:
+
+Ubuntu:
+
+- `aplay tts_output.wav` or `cvlc --play-and-exit tts_output.wav`
+
+MacOS:
+
+- `afplay tts_output.wav`
+
+The `tts` models suitable for voice cloning are `tts_models/multilingual/multi-dataset/xtts_v2` and `tts_models/multilingual/multi-dataset/xtts_v1.1`.
 
 For further information on TTS, see [TTS Documentation](https://docs.coqui.ai/en/latest/models/xtts.html).
 
