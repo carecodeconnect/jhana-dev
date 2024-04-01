@@ -3,7 +3,7 @@ import wave
 
 class Recorder:
     def __init__(self, filename="recorded_audio.wav"):
-        self.filename = filename
+        self.filename = "../audio/" + filename  # Prepend folder path to filename
         self.format = pyaudio.paInt16  # 16-bit resolution
         self.channels = 1  # mono
         self.rate = 16000  # sample rate

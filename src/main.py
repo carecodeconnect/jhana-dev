@@ -5,7 +5,7 @@ import whisper
 import gc  # Import garbage collector
 from transcriber import transcribe_audio
 
-def load_whisper_model(model_name="base.en"): # tiny.en base.en small.en or medium.en
+def load_whisper_model(model_name="medium.en"): # tiny.en base.en small.en medium.en
     """
     Load the Whisper model.
 
@@ -17,7 +17,7 @@ def load_whisper_model(model_name="base.en"): # tiny.en base.en small.en or medi
     """
     return whisper.load_model(model_name)
 
-def audio_recording_and_transcription(model, filename="recorded_audio.wav"):
+def audio_recording_and_transcription(model, filename="../audio/recorded_audio.wav"):
     """
     Record audio after voice activity detection, transcribe it using the given Whisper model.
 
@@ -43,7 +43,7 @@ def main():
     listen.start_recording_if_voice_detected()  # This will record audio including pre-buffer when voice is detected
 
     # Transcribe the recorded audio using the loaded model
-    transcribed_prompt = transcribe_audio("recorded_audio.wav", model)  # Use the default filename from Recorder
+    transcribed_prompt = transcribe_audio("../audio/recorded_audio.wav", model)  # Use the default filename from Recorder
 
     if transcribed_prompt:
         meditation_guide.meditation_guidance(transcribed_prompt)

@@ -57,25 +57,16 @@ def meditation_guidance(prompt):
     pause_buffer = ""
     in_pause = False
     sentences_printed = False  # Flag to track if any sentences have been vocalized
-    first_chunk_handled = False  # Flag to ensure the first chunk ends with a sentence
 
     try:
         for chunk in model.stream(prompt):
             in_pause, sentence_buffer, pause_buffer = process_chunk(chunk, in_pause, sentence_buffer, pause_buffer)
 
-            # Ensure the first chunk processed ends with a sentence before any pause
-            if not first_chunk_handled:
-                if '.' in chunk:
-                    first_chunk_handled = True
-                else:
-                    continue  # Skip further processing until we get a complete sentence
-
-            if '.' in chunk:
+            if '.' in sentence_buffer:
                 sentence_buffer = print_sentences_from_buffer(sentence_buffer)
                 sentences_printed = True  # Update flag after vocalizing sentences
 
-            if not in_pause and pause_buffer:
-                # Handle the pause instruction outside the loop to skip if it's the first event
+            if not in_pause and sentences_printed and pause_buffer:
                 handle_pause_instruction(pause_buffer, sentences_printed)
                 pause_buffer = ""
 
@@ -86,4 +77,5 @@ def meditation_guidance(prompt):
     # Process any remaining text after the loop
     if sentence_buffer:
         print_sentences_from_buffer(sentence_buffer)  # Vocalize any remaining text
+
 
