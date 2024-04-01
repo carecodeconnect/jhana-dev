@@ -134,7 +134,13 @@ Jhana can be run in two modes: with or without EEG sensing. The EEG sensing mode
 
 1. Change directory: `cd src`
 
-2. Run the app: `python main.py`
+2. Run the app: 
+
+- `python main.py`
+
+Or:
+
+- `./main.py`
 
 3. Jhana will wait for your voice with a "Listening..." prompt
 
