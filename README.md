@@ -14,7 +14,7 @@ To download the model from Hugging Face, see [jhana-mistral-GGUF](https://huggin
 
 ## Requirements
 
-- Windows/Linux/MacOS machine.
+- Windows/MacOS/Linux machine with at least i5 or equivalent processor.
 - NVIDIA/AMD GPU with CUDA support recommended for running the deep learning models.
 - 8 GB of VRAM is recommended.
 - Around 20 GB of free disk space is required for the deep learning models.
@@ -26,7 +26,9 @@ To download the model from Hugging Face, see [jhana-mistral-GGUF](https://huggin
 
 On first running the app, the deep learning models will be downloaded and installed. This may take some time, depending on your internet connection. An alternative is to download the models prior to running the app, by running the following commands:
 
-### Prerequisites: Windows Users
+### Prerequisites
+
+#### Windows
 
 Install Chocolatey by following these instructions: [here](https://chocolatey.org/install) or [here](https://community.chocolatey.org/courses/installation/installing?method=installing-chocolatey).
 
@@ -34,7 +36,11 @@ Run Command Prompt (`cmd.exe`) or PowerShell (`powershell.exe`) as Administrator
 
 - `choco install ffmpeg`
 
-### Prerequisites: Ubuntu Users
+#### MacOS
+
+- `brew install ffmpeg`
+
+#### Ubuntu
 
 - `sudo apt install gcc` # for simpleaudio
 - `sudo apt install ffmpeg`
@@ -81,39 +87,29 @@ Follow the instructions at [PyAudio](https://pypi.org/project/PyAudio/)
 
 For example:
 
-- `pip install pyaudio==0.2.14` # for Windows
-- `conda install -c conda-forge PyAudio=0.2.14` # for Ubuntu
-- `brew install portaudio` then `pip install pyaudio==0.2.14` # for MacOS
+#### Windows
 
-## Audio Plugin for Ubuntu
+- `pip install pyaudio==0.2.14`
 
+#### MacOS
+
+- `brew install portaudio` then `pip install pyaudio==0.2.14`
+
+#### Ubuntu
+
+- `conda install -c conda-forge PyAudio=0.2.14`
 - `conda install alsa-plugins`
 
 ### Install Whisper and Download Model
 
-Follow the instructions at [OpenAI Whisper](https://pypi.org/project/openai-whisper/).
+Follow the instructions at [OpenAI Whisper](https://pypi.org/project/openai-whisper/). For example:
 
-For example:
-
-#### Windows
-
-- `choco install ffmpeg`
-- `pip install openai-whisper==20231117`
-
-#### Ubuntu
-
-- `sudo apt update && sudo apt install ffmpeg`
-- `pip install openai-whisper==20231117`
-
-#### MacOS
-
-- `brew install ffmpeg`
 - `pip install openai-whisper==20231117`
 
 To download a speech-to-text model for the first time:
 
 - `cd audio`
-- `whisper voice-to-clone.wav --language English --model tiny.en` # or small.en
+- `whisper voice-to-clone.wav --language English --model tiny.en` 
 
 This should create several transcriptions as text files in the current directory.
 
@@ -123,15 +119,15 @@ For further information on Whisper, see [openai-whisper](https://pypi.org/projec
 
 - `pip install TTS` # if not already installed
 
-To run `tts` in the terminal and download the text-to-speech model for the first time, check you are still in the `src` folder, then:
+To run `tts` in the terminal and download the text-to-speech model for the first time, check you are still in the `audio` folder, then:
 
-#### For Windows:
+#### Windows:
 
 To use CUDA, set `--use_cuda true`, or `--use_cuda false` for CPU.
 
 `tts --model_name tts_models/multilingual/multi-dataset/xtts_v2 --text "Focus on your breath." --speaker_wav voice-to-clone.wav --language_idx en --use_cuda true`
 
-#### For MacOS or Ubuntu:
+#### MacOS or Ubuntu:
 
 To use CUDA, set `--use_cuda true`, or `--use_cuda false` for CPU.
 
@@ -145,15 +141,15 @@ To use CUDA, set `--use_cuda true`, or `--use_cuda false` for CPU.
 
 To play the recorded audio:
 
-Windows:
+##### Windows:
 
 - `start tts_output.wav`
 
-MacOS:
+##### MacOS:
 
 - `afplay tts_output.wav`
 
-Ubuntu:
+##### Ubuntu:
 
 - `aplay tts_output.wav` or `cvlc --play-and-exit tts_output.wav`
 
