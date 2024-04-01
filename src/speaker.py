@@ -11,7 +11,7 @@ tts = TTS("tts_models/multilingual/multi-dataset/xtts_v2").to(device)  # or xtts
 
 def generate_speech(sentence):
     # Check if the input voice file exists
-    voice_file = "../audio/voice-to-clone-batman.wav"
+    voice_file = "../audio/voice-to-clone.wav"
     if not os.path.isfile(voice_file):
         raise FileNotFoundError("No voice to clone")
 
