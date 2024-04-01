@@ -81,12 +81,13 @@ Follow the instructions at [PyAudio](https://pypi.org/project/PyAudio/)
 
 For example:
 
+- `pip install pyaudio==0.2.14` # for Windows
 - `conda install -c conda-forge PyAudio=0.2.14` # for Ubuntu
-- `brew install portaudio` then `pip install pyaudio` # for MacOS
+- `brew install portaudio` then `pip install pyaudio==0.2.14` # for MacOS
 
-### Install Conda Packages
+## Audio Plugin for Ubuntu
 
-- `conda install alsa-plugins` # for Ubuntu
+- `conda install alsa-plugins`
 
 ### Install Whisper and Download Model
 
@@ -94,17 +95,27 @@ Follow the instructions at [OpenAI Whisper](https://pypi.org/project/openai-whis
 
 For example:
 
-- `sudo apt update && sudo apt install ffmpeg` # for Ubuntu
-- `brew install ffmpeg` # for MacOS
+#### Windows
 
+- `choco install ffmpeg`
+- `pip install openai-whisper==20231117`
+
+#### Ubuntu
+
+- `sudo apt update && sudo apt install ffmpeg`
+- `pip install openai-whisper==20231117`
+
+#### MacOS
+
+- `brew install ffmpeg`
 - `pip install openai-whisper==20231117`
 
 To download a speech-to-text model for the first time:
 
-- `cd src`
+- `cd audio`
 - `whisper voice-to-clone.wav --language English --model tiny.en` # or small.en
 
-This creates several transcriptions as text files in the current directory.
+This should create several transcriptions as text files in the current directory.
 
 For further information on Whisper, see [openai-whisper](https://pypi.org/project/openai-whisper/).
 
@@ -114,23 +125,37 @@ For further information on Whisper, see [openai-whisper](https://pypi.org/projec
 
 To run `tts` in the terminal and download the text-to-speech model for the first time, check you are still in the `src` folder, then:
 
+#### For Windows:
+
+To use CUDA, set `--use_cuda true`, or `--use_cuda false` for CPU.
+
+`tts --model_name tts_models/multilingual/multi-dataset/xtts_v2 --text "Focus on your breath." --speaker_wav voice-to-clone.wav --language_idx en --use_cuda true`
+
+#### For MacOS or Ubuntu:
+
+To use CUDA, set `--use_cuda true`, or `--use_cuda false` for CPU.
+
 ```
  tts --model_name tts_models/multilingual/multi-dataset/xtts_v2 \
      --text "Focus on your breath." \
      --speaker_wav voice-to-clone.wav \
      --language_idx en \
-     --use_cuda true # false for CPU
+     --use_cuda true
 ```
 
 To play the recorded audio:
 
-Ubuntu:
+Windows:
 
-- `aplay tts_output.wav` or `cvlc --play-and-exit tts_output.wav`
+- `start tts_output.wav`
 
 MacOS:
 
 - `afplay tts_output.wav`
+
+Ubuntu:
+
+- `aplay tts_output.wav` or `cvlc --play-and-exit tts_output.wav`
 
 The `tts` models suitable for voice cloning are `tts_models/multilingual/multi-dataset/xtts_v2` and `tts_models/multilingual/multi-dataset/xtts_v1.1`.
 
