@@ -3,7 +3,7 @@ import whisper
 import gc
 import torch
 
-def transcribe_audio(filename, model_name="tiny.en"): # small.en or tiny.en or medium.en
+def transcribe_audio(filename, model_name="small.en"): #  tiny.en or small.en or medium.en
     # Load the Whisper model and transcribe the audio file
     model = whisper.load_model(model_name)
     result = model.transcribe(filename)
