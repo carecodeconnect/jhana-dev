@@ -1,0 +1,13 @@
+#muselsl==2.2.2
+#pylsl==1.16.2
+#playsound==1.3.0
+#matplotlib==3.8.2
+#numpy==1.25.2
+#scikit-learn==1.4.0
+#scipy==1.4.0
+muselsl
+pylsl
+playsound
+matplotlib
+scikit-learn
+scipy

@@ -99,6 +99,7 @@ For example:
 
 - `conda install -c conda-forge PyAudio=0.2.14`
 - `conda install alsa-plugins`
+- `conda install -c conda-forge liblsl`
 
 ### Install Whisper and Download Model
 
