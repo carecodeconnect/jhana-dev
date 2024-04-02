@@ -197,6 +197,20 @@ Or:
 
 4. Say "Guide me in a loving-kindness meditation" to begin the meditation session!
 
+## Jhana EEG Setup
+
+Create a new conda environment for the EEG sensing:
+
+- `conda create -n jhana-eeg python=3.10`
+
+Install the dependencies for the EEG sensing:
+
+- `pip install -r requirements-eeg.txt`
+
+Then install the dependencies for the base application:
+
+- `pip install -r requirements.txt`
+
 To run the app with EEG sensing:
 
 0. Ensure that the Muse 2 EEG headband is connected to the computer via Bluetooth.
