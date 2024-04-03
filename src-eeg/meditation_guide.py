@@ -17,8 +17,12 @@ def handle_pause_instruction(pause_instruction, sentences_printed, eeg_stream_in
 
     try:
         # Update the shared pause_duration
-        shared.pause_duration = float(pause_instruction.strip('[]'))
-        print(f"Scanning brain waves for {shared.pause_duration} seconds.")
+        shared.pause_duration = int(float(pause_instruction.strip('[]')))
+        
+        # Message to be both printed and vocalized
+        scanning_message = f"I'm scanning your brain waves for {shared.pause_duration} seconds."
+        print(scanning_message)  # Print the message to the console
+        generate_speech(scanning_message)  # Use TTS to vocalize the message
 
         # Call compute_metrics from eeg.py, which will run for the duration of shared.pause_duration
         eeg.compute_metrics(eeg_stream_inlet, fs)

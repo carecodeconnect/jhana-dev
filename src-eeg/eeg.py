@@ -3,10 +3,9 @@ import time
 import subprocess
 from pylsl import StreamInlet, resolve_byprop
 import utils
-from gtts import gTTS
-from playsound import playsound
 import shared  # Import the shared module to access the pause_duration variable
 import gc
+from speaker import generate_speech  # Import generate_speech from speaker.py
 
 class Band:
     """Enumeration for EEG frequency bands."""
@@ -49,41 +48,6 @@ def initialize_stream():
             return None  # or handle as appropriate for your application
 
         time.sleep(2)  # Wait for 2 seconds before trying again
-
-# def compute_metrics(eeg_inlet, fs):
-#     """Compute and print neurofeedback metrics from EEG data, dynamically using the shared pause duration."""
-#     eeg_buffer = np.zeros((int(fs * BUFFER_LENGTH), 1))
-#     filter_state = None
-#     band_buffer = np.zeros((int(np.floor((BUFFER_LENGTH - EPOCH_LENGTH) / SHIFT_LENGTH + 1)), 4))
-
-#     alpha_metrics, theta_metrics, beta_metrics = [], [], []
-#     start_time = time.time()
-#     end_time = start_time + shared.pause_duration  # Determine the end time based on pause_duration
-
-#     try:
-#         while time.time() < end_time:  # Run until the current time is less than the end time
-#             eeg_data, timestamp = eeg_inlet.pull_chunk(timeout=1, max_samples=int(SHIFT_LENGTH * fs))
-#             if not eeg_data:
-#                 continue  # If no data, skip to the next iteration
-
-#             ch_data = np.array(eeg_data)[:, INDEX_CHANNEL]
-#             eeg_buffer, filter_state = utils.update_buffer(eeg_buffer, ch_data, notch=True, filter_state=filter_state)
-#             data_epoch = utils.get_last_data(eeg_buffer, EPOCH_LENGTH * fs)
-#             band_powers = utils.compute_band_powers(data_epoch, fs)
-
-#             print("band_powers dimensions:", band_powers.shape)
-#             band_buffer, _ = utils.update_buffer(band_buffer, band_powers)
-
-#             smooth_band_powers = np.mean(band_buffer, axis=0)
-#             print_band_powers(smooth_band_powers)
-
-#             alpha_metric, beta_metric, theta_metric = compute_individual_metrics(smooth_band_powers)
-#             alpha_metrics, theta_metrics, beta_metrics = update_metrics(alpha_metrics, theta_metrics, beta_metrics, alpha_metric, beta_metric, theta_metric)  # Adjusted call
-
-#     except KeyboardInterrupt:
-#         print('Closing!')
-#     finally:
-#         gc.collect()  # Clean up after session
 
 def compute_metrics(eeg_inlet, fs):
     """Compute and print neurofeedback metrics from EEG data, and determine the mental state just before the pause duration ends."""
@@ -135,38 +99,7 @@ def compute_individual_metrics(smooth_band_powers):
     print('Alpha Relaxation: {:.2f}, Beta Concentration: {:.2f}, Theta Relaxation: {:.2f}'.format(alpha_metric, beta_metric, theta_metric))
     return alpha_metric, beta_metric, theta_metric
 
-# def update_metrics(alpha_metrics, theta_metrics, beta_metrics, alpha_metric, beta_metric, theta_metric):
-#     """Update and evaluate metrics to determine the mental state."""
-#     alpha_metrics.append(alpha_metric)
-#     theta_metrics.append(theta_metric)
-#     beta_metrics.append(beta_metric)
-
-#     # Calculate the mean metrics to determine the mental state
-#     mean_alpha = np.mean(alpha_metrics)
-#     mean_theta = np.mean(theta_metrics)
-#     mean_beta = np.mean(beta_metrics)
-#     mental_state = determine_mental_state(mean_alpha, mean_theta, mean_beta)
-
-#     print(f"Mental State: {mental_state}")
-
-#     try:
-#         tts = gTTS(text=mental_state, lang='en')
-#         tts.save("mental_state.mp3")
-#         playsound("mental_state.mp3")
-#     except Exception as e:
-#         print(f"Error using gTTS: {e}")
-#     finally:
-#         gc.collect()
-
-#     # Optionally, you might reset the metrics after evaluating the mental state
-#     # This depends on whether you want to accumulate metrics across pauses or evaluate each pause independently
-#     # alpha_metrics, theta_metrics, beta_metrics = [], [], []
-
-#     # Return the updated metrics lists
-#     return alpha_metrics, theta_metrics, beta_metrics
-
 def update_metrics(alpha_metrics, theta_metrics, beta_metrics):
-    """Update and evaluate metrics to determine the mental state."""
     # Calculate the mean metrics to determine the mental state
     mean_alpha = np.mean(alpha_metrics)
     mean_theta = np.mean(theta_metrics)
@@ -176,11 +109,9 @@ def update_metrics(alpha_metrics, theta_metrics, beta_metrics):
     print(f"Mental State: {mental_state}")
 
     try:
-        tts = gTTS(text=mental_state, lang='en')
-        tts.save("mental_state.mp3")
-        playsound("mental_state.mp3")
+        generate_speech(mental_state)  # Use generate_speech to announce the mental state
     except Exception as e:
-        print(f"Error using gTTS: {e}")
+        print(f"Error using generate_speech: {e}")
     finally:
         gc.collect()
 
@@ -189,7 +120,7 @@ def update_metrics(alpha_metrics, theta_metrics, beta_metrics):
 def determine_mental_state(mean_alpha, mean_theta, mean_beta):
     """Determine and return the mental state based on the computed metrics."""
     if (mean_alpha + mean_theta) > (ALPHA_RELAXATION_THRESHOLD + THETA_RELAXATION_THRESHOLD):
-        return "You're relaxed"
+        return "You seem relaxed!"
     elif mean_beta > BETA_ACTIVATION_THRESHOLD:
-        return "You're active"
-    return "Remember Jhana's guidance"
+        return "Your mind seems active!"
+    return "Please follow my instruction!"
