@@ -4,6 +4,8 @@
 
 [![Jhana: Personal Meditation Guide (Sample)](img/jhana-loving-kindness-sample.gif)](https://vimeo.com/930552195)
 
+To view Jhana guiding a 20-minute loving-kindness meditation, [click here](https://vimeo.com/930553973?share=copy).
+
 ## Background
 
 The heart of `Jhāna.AI` is the language model [jhana-mistral-7b-gguf](https://ollama.com/carecodeconnect/jhana-mistral-7b-gguf). This model is trained on a large corpus of meditation texts, and is fine-tuned on a smaller dataset of meditation instructions. The model is capable of generating novel meditation instructions, and can be used to guide the user in a meditation session. The model is deployed with `ollama`, and is accessed by the `Jhana` app.
