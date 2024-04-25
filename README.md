@@ -4,7 +4,9 @@
 
 [![Jhana: Personal Meditation Guide (Sample)](img/jhana-loving-kindness-sample.gif)](https://vimeo.com/930552195)
 
-To view Jhana guiding a 20-minute loving-kindness meditation, [click here](https://vimeo.com/930553973?share=copy).
+To view `Jhāna.AI` guiding a 20-minute loving-kindness meditation, [click here](https://vimeo.com/930553973?share=copy).
+
+To read a presentation on the development of `Jhāna.AI`, [click here](https://speakerdeck.com/carecodeconnect/jhana-personal-meditation-guide).
 
 ## Background
 
